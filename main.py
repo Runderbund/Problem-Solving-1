@@ -87,14 +87,15 @@ For example, an input of "aaabbbbbccccaacccbbbaaabbbaaa" would compress to "3a5b
 def compress_string(string):
     count = 1
     compressed_string = ""
-    for i in range(len(string)-2): # Will be comparing one forward, avoid index error at end
+    for i in range(len(string)-1): # Will be comparing one forward, avoid index error at end
         if string[i] == string[i+1]:
             count +=1
-            if i+1 == len(string)-1:
+            if i == len(string)-2:
                 compressed_string += str(count) + string[i]
         else:
             compressed_string += str(count) + string[i]
             count = 1
     return compressed_string
 
-print (compress_string("aaaabbbb"))
+
+print (compress_string("aaabbbbbccccaacccbbbaaabbbaaa"))
